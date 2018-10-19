@@ -1,0 +1,105 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+}
+.boton{
+	background: black;
+	color: white;
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 5px;
+	font-size: 16px;
+	text-decoration: none;
+}
+.boton-rojo{
+	@extend .boton;
+	background: red;
+}
+
+.boton-chico{
+	@extend .boton;
+	font-size: 14px;
+	padding: 5px 15px;
+}
+
+.boton-grande{
+	@extend .boton;
+	font-size: 20px;
+}
+
+.boton-linea{
+	@extend .boton;
+	background: none;
+	border: 1px solid #444;
+	color: #333;
+}
+
+.boton-x{
+	@extend .boton;
+	background: #456783;
+	&:hover{
+		background: darken(#456783, 15px);
+		tranform: scale(1.1);
+	}
+}
+
+@mixin hacercirculos($tamano, $color){
+	width: $tamano;
+	height: $tamano;
+	background: $color;
+	display: inline-block;
+	border-radius: 50%;
+}
+.circulo1{
+	@include hacercirculos(100px, red);
+}
+.circulo2{
+	@include hacercirculos(200px, green);
+}
+.circulo3{
+	@include hacercirculos(150px, blue);
+}
+
+@mixin hacerbotones($color_txt, $color_fondo, $radio, $paddingv, $paddingh, $tamano_fuente){
+	display: inline-block;
+	text-decoration: none;
+	color: $color_txt;
+	background: $color_fondo;
+	border-radius: $radio;
+	padding: $paddingv $paddingh;
+	font-size: $tamano_fuente;
+	transition: 1s;
+	&:hover{
+		tranform: scale(1.1);
+		background: darken($color_fondo, 15%)
+	}
+}
+
+
+
+
+.redondo1{
+	@include hacerbotones(white, #34578e, 5px, 10px, 30px, 20px);
+}
+
+.redondo2{
+	@include hacerbotones(yellow, blue, 25px, 3px, 25px, 10px);
+}
+.redondo3{
+	@include hacerbotones(#D3F455, #45d34e, 30px, 20px, 20px, 16px);
+}
+
+@mixin border-radius($radio){
+	-moz-border-radius:$radio;
+	-o-border-radius:$radio;
+	-ms-border-radius:$radio;
+	-webkit-border-radius:$radio;
+	border-radius:$radio;
+}
+
+@mixin text-shadow($offsetv, $offseth, $blur, $colorx){
+
+	-moz-text-shadow: $offsetv $offseth $blur $color{
+	-o-text-shadow: $offsetv $offseth $blur $color
+	-ms-text-shadow: $offsetv $offseth $blur $color
+	-webkit-text-shadow: $offsetv $offseth $blur $color
+}
